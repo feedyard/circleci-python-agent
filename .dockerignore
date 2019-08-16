@@ -1,0 +1,7 @@
+.*
+Dockerfile.unpinned
+Gemfile
+profiles/
+requirements.txt
+tasks.py
+testlocal.sh
