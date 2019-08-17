@@ -52,7 +52,7 @@ control 'pytest version' do
   title 'confirm pytest version installed'
   desc 'confirm version reported by pytest matches the desired version'
   describe command('pytest --version') do
-    its('stdout') { should include ('5.0') }
+    its('stdout') { should include ('5.1') }
   end
 end
 

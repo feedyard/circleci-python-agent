@@ -19,12 +19,13 @@ RUN apk --no-cache add  \
     rm -r /root/.cache && \
     pip install \
         pylint==2.3.1 \
-        pytest==5.0.1 \
+        pytest==5.1.0 \
         pytest-runner==5.1 \
         coverage==4.5.4 \
         twine==1.13.0 && \
     curl -SLO https://codeclimate.com/downloads/test-reporter/test-reporter-${CC_TEST_REPORTER_VERSION}-linux-amd64 && \
         mv test-reporter-${CC_TEST_REPORTER_VERSION}-linux-amd64 /usr/bin/cc-test-reporter && \
-        chmod +x /usr/bin/cc-test-reporter
+        chmod +x /usr/bin/cc-test-reporter && \
+    apk del build-dependencies
 
 HEALTHCHECK NONE
