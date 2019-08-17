@@ -7,6 +7,7 @@ ENV CC_TEST_REPORTER_VERSION=0.7.0
 
 # general packages to support building infra oriented docker images
 RUN apk --no-cache add  \
+        curl=7.65.1-r0 \
         python3=3.7.3-r0 && \
     apk --no-cache add --virtual build-dependencies \
         build-base=0.5-r1 \
