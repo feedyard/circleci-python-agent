@@ -20,6 +20,9 @@ RUN pip install \
         pytest-runner==5.1 \
         coverage==4.5.4 \
         twine==1.13.0 && \
+    apk add --virtual build-dependencies \
+        build-base=0.5-r1 \
+        python3-dev=3.7.3-r0 \
     curl -SLO https://codeclimate.com/downloads/test-reporter/test-reporter-${CC_TEST_REPORTER_VERSION}-linux-amd64 && \
         mv test-reporter-${CC_TEST_REPORTER_VERSION}-linux-amd64 /usr/bin/cc-test-reporter && \
         chmod +x /usr/bin/cc-test-reporter
