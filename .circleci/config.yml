@@ -8,12 +8,12 @@ orbs:
 workflows:
   version: 2
 
-  circleci-python-agent-executor-pipeline:
+  circleci-python-pkg-agent-executor-pipeline:
     jobs:
       - executor-tools/dev-release:
           name: dev-release
           context: executor-publishing
-          image: feedyard/circleci-python-agent
+          image: feedyard/circleci-python-pkg-agent
           registry: quay.io
           after-build:
             - run:
@@ -21,8 +21,8 @@ workflows:
                 command: |
                   set -euo pipefail
                   inspec exec --no-distinct-exit --chef-license accept-silent profiles/cis-docker
-                  CID="$(docker run -it -d --entrypoint ash quay.io/feedyard/circleci-python-agent:dev.$CIRCLE_SHA1)"
-                  inspec exec profiles/circleci-python-agent/ -t docker://$CID --chef-license accept-silent
+                  CID="$(docker run -it -d --entrypoint ash quay.io/feedyard/circleci-python-pkg-agent:dev.$CIRCLE_SHA1)"
+                  inspec exec profiles/circleci-python-pkg-agent/ -t docker://$CID --chef-license accept-silent
                   docker rm -f $CID
           filters:
             branches:
@@ -31,16 +31,16 @@ workflows:
               ignore: /.*/
       - executor-tools/publish:
           context: executor-publishing
-          image: feedyard/circleci-python-agent
+          image: feedyard/circleci-python-pkg-agent
           registry: quay.io
           after-publish:
             - common/slack:
                 title: New Executor Version
-                message: new version published feedyard/circleci-python-agent $CIRCLE_TAG
+                message: new version published feedyard/circleci-python-pkg-agent $CIRCLE_TAG
                 webhook: SLACK_WEBHOOK
           clean-tags:
             - executor-tools/clean-quay:
-                image: feedyard/circleci-python-agent
+                image: feedyard/circleci-python-pkg-agent
                 bearer-token: QUAYIO_BEARER_TOKEN
           filters:
             branches:
@@ -61,7 +61,7 @@ workflows:
       - executor-tools/dev-release:
           name: nightly-build
           context: executor-publishing
-          image: feedyard/circleci-python-agent
+          image: feedyard/circleci-python-pkg-agent
           dockerfile: Dockerfile.unpinned
           tag: nightly
           registry: quay.io
@@ -71,6 +71,6 @@ workflows:
                 command: |
                   set -euo pipefail
                   inspec exec --no-distinct-exit --chef-license accept-silent profiles/cis-docker
-                  CID="$(docker run -it -d --entrypoint ash quay.io/feedyard/circleci-python-agent:nightly)"
-                  inspec exec profiles/circleci-base-python-unpinned/ -t docker://$CID --chef-license accept-silent
+                  CID="$(docker run -it -d --entrypoint ash quay.io/feedyard/circleci-python-pkg-agent:nightly)"
+                  inspec exec profiles/circleci-base-python-pkg-unpinned/ -t docker://$CID --chef-license accept-silent
                   docker rm -f $CID
