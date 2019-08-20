@@ -4,6 +4,11 @@ control 'packages' do
   desc 'confirm all desired packages are installed'
   describe command('apk info') do
     its('stdout') { should include ('python3') }
+    its('stdout') { should include ('build-base') }
+    its('stdout') { should include ('python3-dev') }
+    its('stdout') { should include ('g++') }
+    its('stdout') { should include ('gcc') }
+    its('stdout') { should include ('make') }
   end
 end
 
