@@ -30,11 +30,22 @@ control 'python packages' do
   title 'confirm python package installation'
   desc 'confirm all desired python packages are installed'
   describe command('pip list') do
+    its('stdout') { should include ('setuptools') }
+    its('stdout') { should include ('wheel') }
+    its('stdout') { should include ('twine') }
     its('stdout') { should include ('pylint') }
     its('stdout') { should include ('pytest') }
     its('stdout') { should include ('pytest-runner') }
     its('stdout') { should include ('coverage') }
-    its('stdout') { should include ('twine') }
+  end
+end
+
+control 'wheel version' do
+  impact 1.0
+  title 'confirm wheel version installed'
+  desc 'confirm version reported by wheel matches the desired version'
+  describe command('wheel version') do
+    its('stdout') { should include ('0.33') }
   end
 end
 
