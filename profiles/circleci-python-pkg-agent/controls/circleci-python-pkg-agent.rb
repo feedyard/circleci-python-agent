@@ -9,6 +9,7 @@ control 'packages' do
     its('stdout') { should include ('g++') }
     its('stdout') { should include ('gcc') }
     its('stdout') { should include ('make') }
+    its('stdout') { should include ('libffi-dev') }
   end
 end
 

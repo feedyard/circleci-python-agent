@@ -11,6 +11,7 @@ RUN apk --no-cache add  \
         python3=3.7.3-r0 \
         build-base=0.5-r1 \
         python3-dev=3.7.3-r0 \
+        libffi-dev=3.2.1-r6 \
         g++=8.3.0-r0 \
         gcc=8.3.0-r0 \
         make=4.2.1-r2 && \
