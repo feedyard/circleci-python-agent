@@ -12,6 +12,7 @@ RUN apk --no-cache add  \
         build-base=0.5-r1 \
         python3-dev=3.7.3-r0 \
         libffi-dev=3.2.1-r6 \
+        libressl-dev=2.7.5-r0 \
         g++=8.3.0-r0 \
         gcc=8.3.0-r0 \
         make=4.2.1-r2 && \
@@ -27,7 +28,8 @@ RUN apk --no-cache add  \
         pylint==2.3.1 \
         pytest==5.1.0 \
         pytest-runner==5.1 \
-        coverage==4.5.4 && \
+        coverage==4.5.4 \
+        cryptography==2.7 && \
     curl -SLO https://codeclimate.com/downloads/test-reporter/test-reporter-${CC_TEST_REPORTER_VERSION}-linux-amd64 && \
         mv test-reporter-${CC_TEST_REPORTER_VERSION}-linux-amd64 /usr/bin/cc-test-reporter && \
         chmod +x /usr/bin/cc-test-reporter
