@@ -102,3 +102,12 @@ control 'pylint version' do
     its('stdout') { should include ('2.3') }
   end
 end
+
+control 'hub version' do
+  impact 1.0
+  title 'confirm hub version installed'
+  desc 'confirm version reported by hub matches the desired version'
+  describe command('hub --version') do
+    its('stdout') { should include ('2.12') }
+  end
+end
