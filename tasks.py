@@ -3,7 +3,7 @@ import re
 
 @task
 def buildlocal(ctx):
-    ctx.run("docker build -t local/circleci-base-agent:latest .")
+    ctx.run("docker build -t local/circleci-python-pkg-agent:latest .")
 
 @task
 def testlocal(ctx):
@@ -11,14 +11,14 @@ def testlocal(ctx):
 
 @task
 def buildlatest(ctx):
-    ctx.run("docker build -f Dockerfile.unpinned -t local/circleci-base-agent:latest .")
+    ctx.run("docker build -f Dockerfile.unpinned -t local/circleci-python-pkg-agent:latest .")
 
 @task
 def evalpackages(ctx):
-    ctx.run("docker build -t local/circleci-base-agent:pinned . > result_log.pinned")
-    ctx.run("docker build -f Dockerfile.unpinned -t local/circleci-base-agent:latest . > result_log.latest")
-    ctx.run('docker rmi local/circleci-base-agent:pinned >> result_log.pinned')
-    ctx.run('docker rmi local/circleci-base-agent:latest >> result_log.latest')
+    ctx.run("docker build -t local/circleci-python-pkg-agent:pinned . > result_log.pinned")
+    ctx.run("docker build -f Dockerfile.unpinned -t local/circleci-python-pkg-agent:latest . > result_log.latest")
+    ctx.run('docker rmi local/circleci-python-pkg-agent:pinned >> result_log.pinned')
+    ctx.run('docker rmi local/circleci-python-pkg-agent:latest >> result_log.latest')
     with open('result_log.latest', 'rU') as f_latest:
         print('{0:20} {1:20} {2:20}'.format('PACKAGE', 'LATEST', 'PINNED'))
         for line_latest in f_latest:
