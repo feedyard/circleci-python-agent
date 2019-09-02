@@ -26,6 +26,7 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositori
         setuptools==41.2.0 \
         wheel==0.33.6 \
         twine==1.13.0 \
+        pipenv==2018.11.26 \
         pylint==2.3.1 \
         pytest==5.1.1 \
         pytest-runner==5.1 \

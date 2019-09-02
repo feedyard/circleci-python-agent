@@ -41,6 +41,7 @@ control 'python packages' do
     its('stdout') { should include ('setuptools') }
     its('stdout') { should include ('wheel') }
     its('stdout') { should include ('twine') }
+    its('stdout') { should include ('pipenv') }
     its('stdout') { should include ('pylint') }
     its('stdout') { should include ('pytest') }
     its('stdout') { should include ('pytest-runner') }
@@ -55,6 +56,15 @@ control 'wheel version' do
   desc 'confirm version reported by wheel matches the desired version'
   describe command('wheel version') do
     its('stdout') { should include ('0.33') }
+  end
+end
+
+control 'pipenv version' do
+  impact 1.0
+  title 'confirm pipenv version installed'
+  desc 'confirm version reported by pipenv matches the desired version'
+  describe command('pipenv --version') do
+    its('stdout') { should include ('2018.11.26') }
   end
 end
 

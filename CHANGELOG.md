@@ -52,3 +52,7 @@ coverage==4.5.4
 cryptography==2.7
 
 CC_TEST_REPORTER_VERSION=0.7.0
+
+### 09-03-2019 add pipenv
+
+pipenv==2018.11.26
