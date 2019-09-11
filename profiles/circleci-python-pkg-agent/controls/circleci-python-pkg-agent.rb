@@ -9,9 +9,6 @@ control 'packages' do
     its('stdout') { should include ('python3-dev') }
     its('stdout') { should include ('libffi-dev') }
     its('stdout') { should include ('libressl-dev') }
-    its('stdout') { should include ('g++') }
-    its('stdout') { should include ('gcc') }
-    its('stdout') { should include ('make') }
   end
 end
 
@@ -41,12 +38,6 @@ control 'python packages' do
     its('stdout') { should include ('setuptools') }
     its('stdout') { should include ('wheel') }
     its('stdout') { should include ('twine') }
-    its('stdout') { should include ('pipenv') }
-    its('stdout') { should include ('pylint') }
-    its('stdout') { should include ('pytest') }
-    its('stdout') { should include ('pytest-runner') }
-    its('stdout') { should include ('coverage') }
-    its('stdout') { should include ('cryptography') }
   end
 end
 
@@ -56,42 +47,6 @@ control 'wheel version' do
   desc 'confirm version reported by wheel matches the desired version'
   describe command('wheel version') do
     its('stdout') { should include ('0.33') }
-  end
-end
-
-control 'pipenv version' do
-  impact 1.0
-  title 'confirm pipenv version installed'
-  desc 'confirm version reported by pipenv matches the desired version'
-  describe command('pipenv --version') do
-    its('stdout') { should include ('2018.11.26') }
-  end
-end
-
-control 'pylint version' do
-  impact 1.0
-  title 'confirm pylint version installed'
-  desc 'confirm version reported by pylint matches the desired version'
-  describe command('pylint --version') do
-    its('stdout') { should include ('2.3') }
-  end
-end
-
-control 'pytest version' do
-  impact 1.0
-  title 'confirm pytest version installed'
-  desc 'confirm version reported by pytest matches the desired version'
-  describe command('pytest --version') do
-    its('stderr') { should include ('5.1') }
-  end
-end
-
-control 'coverage version' do
-  impact 1.0
-  title 'confirm coverage version installed'
-  desc 'confirm version reported by coverage matches the desired version'
-  describe command('coverage --version') do
-    its('stdout') { should include ('4.5') }
   end
 end
 
@@ -110,5 +65,14 @@ control 'pylint version' do
   desc 'confirm version reported by pylint matches the desired version'
   describe command('pylint --version') do
     its('stdout') { should include ('2.3') }
+  end
+end
+
+control 'cc-test-reporter installed' do
+  impact 1.0
+  title 'confirm cc-test-reporter installed'
+  desc 'confirm cc-test-reporter installed'
+  describe command('cc-test-reporter --version') do
+    its('stdout') { should include ('Code Climate Test Reporter') }
   end
 end

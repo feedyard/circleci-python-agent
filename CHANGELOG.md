@@ -56,3 +56,19 @@ CC_TEST_REPORTER_VERSION=0.7.0
 ### 09-03-2019 add pipenv
 
 pipenv==2018.11.26
+
+### 09-10-2019 simplified (assume no dev packages)
+
+remove
+
+pipenv==2018.11.26
+pylint==2.3.1
+pytest==5.1.1
+pytest-runner==5.1
+coverage==4.5.4
+cryptography==2.7
+
+pip==19.2.3
+setuptools==41.2.0
+wheel==0.33.6
+twine==1.14.0

@@ -9,9 +9,6 @@ control 'packages' do
     its('stdout') { should include ('python3-dev') }
     its('stdout') { should include ('libffi-dev') }
     its('stdout') { should include ('libressl-dev') }
-    its('stdout') { should include ('g++') }
-    its('stdout') { should include ('gcc') }
-    its('stdout') { should include ('make') }
   end
 end
 
@@ -23,10 +20,14 @@ control 'python packages' do
     its('stdout') { should include ('setuptools') }
     its('stdout') { should include ('wheel') }
     its('stdout') { should include ('twine') }
-    its('stdout') { should include ('pylint') }
-    its('stdout') { should include ('pytest') }
-    its('stdout') { should include ('pytest-runner') }
-    its('stdout') { should include ('coverage') }
-    its('stdout') { should include ('cryptography') }
+  end
+end
+
+control 'cc-test-reporter installed' do
+  impact 1.0
+  title 'confirm cc-test-reporter installed'
+  desc 'confirm cc-test-reporter installed'
+  describe command('cc-test-reporter --version') do
+    its('stdout') { should include ('Code Climate Test Reporter') }
   end
 end
