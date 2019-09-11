@@ -26,7 +26,7 @@ control 'pip version' do
   title 'confirm pip version installed'
   desc 'confirm version reported by pip3 matches the desired version'
   describe command('pip -V') do
-    its('stdout') { should include ('19') }
+    its('stdout') { should include ('19.2') }
   end
 end
 
@@ -56,15 +56,6 @@ control 'twine version' do
   desc 'confirm version reported by twine matches the desired version'
   describe command('twine --version') do
     its('stdout') { should include ('1.14') }
-  end
-end
-
-control 'pylint version' do
-  impact 1.0
-  title 'confirm pylint version installed'
-  desc 'confirm version reported by pylint matches the desired version'
-  describe command('pylint --version') do
-    its('stdout') { should include ('2.3') }
   end
 end
 
