@@ -12,10 +12,7 @@ RUN apk --no-cache add  \
         build-base \
         python3-dev \
         libffi-dev \
-        libressl-dev \
-        g++ \
-        gcc \
-        make && \
+        libressl-dev && \
     python3 -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
     pip3 install --upgrade pip && \
@@ -24,13 +21,7 @@ RUN apk --no-cache add  \
     pip install \
         setuptools \
         wheel \
-        twine \
-        pipenv \
-        pylint \
-        pytest \
-        pytest-runner \
-        coverage \
-        cryptography && \
+        twine && \
     curl -SLO https://codeclimate.com/downloads/test-reporter/test-reporter-${CC_TEST_REPORTER_VERSION}-linux-amd64 && \
     mv test-reporter-${CC_TEST_REPORTER_VERSION}-linux-amd64 /usr/bin/cc-test-reporter && \
     chmod +x /usr/bin/cc-test-reporter

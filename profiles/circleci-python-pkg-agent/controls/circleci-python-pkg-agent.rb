@@ -55,7 +55,7 @@ control 'twine version' do
   title 'confirm twine version installed'
   desc 'confirm version reported by twine matches the desired version'
   describe command('twine --version') do
-    its('stdout') { should include ('1.13') }
+    its('stdout') { should include ('1.14') }
   end
 end
 
