@@ -72,5 +72,5 @@ workflows:
                   set -euo pipefail
                   inspec exec --no-distinct-exit --chef-license accept-silent profiles/cis-docker
                   CID="$(docker run -it -d --entrypoint ash quay.io/feedyard/circleci-python-pkg-agent:nightly)"
-                  inspec exec profiles/circleci-python-pkg-unpinned/ -t docker://$CID --chef-license accept-silent
+                  inspec exec profiles/circleci-python-pkg-agent-unpinned/ -t docker://$CID --chef-license accept-silent
                   docker rm -f $CID
